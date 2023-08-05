@@ -17,7 +17,35 @@ session_start();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  
+<style>
+  body{
+   background-color: rgb(246,246,246);
+  }
+  .h1{
+    font-family: monospace;
+    font-weight: 700;
+    font-size: 45px;
+    margin-top:60px;
+    text-align: center;
+    color: rgb(28,86,58);
+  }
+  .row{
+    width:30%;
+    height: 50%;
+    border-top: 2px dotted green;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgb(155, 201, 185);
+    margin-top:20px;
+    margin-left:10px;
+  }
+  .row2{
+    text-align: center;
+    font-size: 15px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+     'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(27, 119, 75);
+  }
+  </style>
 <body>
 <!-- Navbar -->
     <nav class="navbar navbar-expand-sm ">
@@ -58,26 +86,26 @@ session_start();
       </nav>
 
       <div class="container-fluid">
+
+
       <?php
-
-
 if (!empty($_SESSION['products'])) {
-  echo '<h1>All Products</h1>';
+  echo '<h1 class="h1">All Products</h1>';
    
   foreach ($_SESSION['products'] as $item) {
     echo '<div class="row">';
-    echo '<div class="col-sm-4">';
-    echo '<img src="' . $item['url'] . '" width="200" height="200" alt="Product Image">';
-    
+    echo '<div class="row2">';
+    echo '<br>';
+    echo '<img src="' . $item['url'] . '" width="250" height="250" alt="Product Image">';
+    echo '<br>';
+    echo '<br>';
     echo 'The Name: ' . $item['ItemName'] . '<br>';
     echo 'Description: ' . $item['TheDescription'] . '<br>';
     echo 'The Price: ' . $item['ThePrice'] . '<br>';
 
     echo '</div>';
     echo '</div>';
-}
-
-    
+  }
 } else {
     echo "No products found in the session.";
 }
