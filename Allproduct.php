@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,10 +17,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  <body>
-
-
-
+  
+<body>
 <!-- Navbar -->
     <nav class="navbar navbar-expand-sm ">
         <a class="navbar-brand" href="#"><img src="image/78-782689_recycle-clean-recycling-recycling-logo-transparent-background-hd-removebg-preview.png" class="logo" ></a>
@@ -53,47 +56,44 @@
           </svg>
         </div>
       </nav>
+
       <div class="container-fluid">
-  
+      <?php
 
 
-        
-<!-- Header Section        -->
-<div class="row" id="row1">
-    <div class="col-sm-8">
-      <div class="content"><h1 class="h">Welcome to our Recycled Jewelry Website!</h1><p>At Recycled Jewelly,
-         we are passionate about sustainable fashion and environmentally friendly practices.
-         Our mission is to offer you beautifully crafted jewelry pieces that not only adorn your style but also contribute to a cleaner and greener planet. With a focus on recycling and upcycling materials, we bring you unique and stunning
-         jewelry collections that resonate with eco-conscious individuals like you.</p></div>
-      <i class="bi bi-arrow-left-circle"></i>
-      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-       <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-    </svg>
-    <button type="button" class="btn btn-success" id="button">Shop Now</button>
-    </div>
-    <div class="col-sm-4">
-        <i class="bi bi-arrow-right-circle"></i>
-        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-        </svg>
-    </div>
-</div>
+if (!empty($_SESSION['products'])) {
+  echo '<h1>All Products</h1>';
+   
+  foreach ($_SESSION['products'] as $item) {
+    echo '<div class="row">';
+    echo '<div class="col-sm-4">';
+    echo '<img src="' . $item['url'] . '" width="200" height="200" alt="Product Image">';
+    
+    echo 'The Name: ' . $item['ItemName'] . '<br>';
+    echo 'Description: ' . $item['TheDescription'] . '<br>';
+    echo 'The Price: ' . $item['ThePrice'] . '<br>';
+
+    echo '</div>';
+    echo '</div>';
+}
+
+    
+} else {
+    echo "No products found in the session.";
+}
+?>
 
 
 
-<!-- Add items -->
 
-<div class="row" id="row2">
-    <div class="col-sm-12">
-    <h1 class="Header">Add Product</h1>
-    <form>
-          <input type="text" class="form-control" id="in1" placeholder="Item Name">
-          <input type="text" class="form-control" id="in2" placeholder="The Description">
-          <input type="url" class="form-control" id="in3" placeholder="URL of photo">
-          <input type="text" class="form-control" id="in4" placeholder="The Price">
-          <button type="button" class="btn btn-success" id="button1">Submit</button>
-   </form>
-</div>
+
+
+
+
+
+
+
+
 
 
 
@@ -132,10 +132,10 @@
   </form>
 </div>
 
-
+</div>
 
   </div>
-</div>
+
    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
