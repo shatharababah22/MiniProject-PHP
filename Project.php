@@ -23,6 +23,12 @@ session_start();
 
   <!-- style of php code -->
   <style>
+   
+   /* @media screen and (min-width: 481px) and (max-width: 768px) {
+  body {
+    background-color: green;
+  }
+} */
   .Table {
     width: 100%;
    
@@ -55,7 +61,10 @@ body{
 .a1{
   color:white;
 }
+
 </style>
+
+
 
 
 <body>
@@ -69,7 +78,7 @@ body{
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="./Project.php">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./Allproduct.php">All products</a>
@@ -100,7 +109,9 @@ body{
   
 
 
-        
+
+
+      
 <!-- Header Section        -->
 <div class="row" id="row1">
     <div class="col-sm-8">
@@ -124,6 +135,7 @@ body{
 
 
 
+
 <!-- Add items -->
 
 <div class="row" id="row2">
@@ -140,8 +152,15 @@ body{
 
 
 
+
+
+
+
+
 <!-- PHP code -->
+
 <?php
+
 
 
 
@@ -149,14 +168,17 @@ if (!isset($_SESSION['products'])) {
     $_SESSION['products'] = array();
 }
 
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    $newItem = array(
+   $newItem = array(
         'ItemName' => $_POST["ItemName"],
         'TheDescription' => $_POST["TheDescription"],
         'url' => $_POST["url"],
         'ThePrice' => $_POST["ThePrice"]
     );
-     
+
+
     // Check if the item already exists in the products array
     $isDuplicate = false;
     foreach ($_SESSION['products'] as $item) {
@@ -169,7 +191,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     if (!$isDuplicate) {
         $_SESSION['products'][] = $newItem;
     }
+
 }
+
+
 
 if (!empty($_SESSION['products'])) {
     echo '<table class="Table">
@@ -195,6 +220,8 @@ if (!empty($_SESSION['products'])) {
 
     echo "</table>";
 }
+
+
 
 
 // // remove all session variables

@@ -10,7 +10,7 @@ session_start();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <link rel="stylesheet" href="./Project.css">
+    <link rel="stylesheet" href="./Project.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-…" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Bootstrap CSS -->
   
@@ -29,22 +29,13 @@ session_start();
     text-align: center;
     color: rgb(28,86,58);
   }
-  .row{
-    width:30%;
-    height: 50%;
-    border-top: 2px dotted green;
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px rgb(155, 201, 185);
-    margin-top:20px;
-    margin-left:10px;
+ 
+
+  .idlediv{
+    height: 500px;
   }
-  .row2{
-    text-align: center;
-    font-size: 15px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont,
-     'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: rgb(27, 119, 75);
-  }
+
+
   </style>
 <body>
 <!-- Navbar -->
@@ -57,7 +48,7 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="./Project.php">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">All products</a>
@@ -89,12 +80,13 @@ session_start();
 
 
       <?php
+      echo '<h1 class="h1">All Products</h1>';
 if (!empty($_SESSION['products'])) {
-  echo '<h1 class="h1">All Products</h1>';
-   
+  
+  echo '<div class="products-container">';
   foreach ($_SESSION['products'] as $item) {
-    echo '<div class="row">';
-    echo '<div class="row2">';
+    echo '<div class="row3">';
+    
     echo '<br>';
     echo '<img src="' . $item['url'] . '" width="250" height="250" alt="Product Image">';
     echo '<br>';
@@ -104,12 +96,17 @@ if (!empty($_SESSION['products'])) {
     echo 'The Price: ' . $item['ThePrice'] . '<br>';
 
     echo '</div>';
-    echo '</div>';
+   
   }
+  echo '</div>';
 } else {
     echo "No products found in the session.";
+    echo '<div class="idlediv">';
+
+    echo '</div>';
 }
 ?>
+
 
 
 
